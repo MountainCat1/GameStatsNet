@@ -87,6 +87,7 @@ services.InstallSwagger();
 services.InstallMassTransit(configuration);
 services.InstallCors();
 services.InstallDbContext(configuration);
+services.InstallMongoDb(configuration);
 services.DefineAuthorizationPolicies();
 //  ===            ===
 
