@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using GameStatsNet.Application.Authorization.Handlers;
+using GameStatsNet.Application.Authorization.Requirements;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameStatsNet.Application.Authorization.Extensions
@@ -10,6 +12,7 @@ namespace GameStatsNet.Application.Authorization.Extensions
             // TODO: Replace placeholder
             // Example:
             // services.AddSingleton<IAuthorizationHandler, IsOrganizerOfHandler>();
+            services.AddSingleton<IAuthorizationHandler, HasPermissionAuthorizationHandler>();
 
             services.AddAuthorization(DefineAuthorizationPolicies);
 
@@ -27,12 +30,10 @@ namespace GameStatsNet.Application.Authorization.Extensions
 
         private static void DefineAuthorizationPolicies(AuthorizationOptions options)
         {
-            // TODO: Replace placeholder
-            // Example:
-            // options.AddPolicyWithRequirements(Policies.ReadConvention, new IAuthorizationRequirement[]
-            // {
-            //     new IsOrganizerOfRequirement()
-            // });
+            options.AddPolicyWithRequirements(Policies.CreateGameMatch, new IAuthorizationRequirement[]
+            {
+                new HasPermissionRequirement(Permissions.CreateGameMatch)
+            });
         }
     }
 }

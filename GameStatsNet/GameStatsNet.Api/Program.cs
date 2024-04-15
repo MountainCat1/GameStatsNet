@@ -84,7 +84,7 @@ services.AddLogging(loggingBuilder =>
 
 //  === INSTALLERS ===
 services.InstallSwagger();
-services.InstallMassTransit(configuration);
+// services.InstallMassTransit(configuration);
 services.InstallCors();
 services.InstallDbContext(configuration);
 services.InstallMongoDb(configuration);

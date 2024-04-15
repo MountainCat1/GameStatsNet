@@ -12,13 +12,7 @@ public static class MongoDbInstaller
             return new MongoClient(mongoConfigConnection);
         });
         
-        services.AddSingleton<IMongoDatabase>(sp =>
-        {
-            var connectionString = configuration.GetConnectionString("MongoDb");
-            var mongoUrl = new MongoUrl(connectionString);
-            var client = new MongoClient(mongoUrl);
-            return client.GetDatabase(mongoUrl.DatabaseName);
-        });
+        services.AddSingleton<MongoDbContext>();
 
         return services;
     }

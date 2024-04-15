@@ -12,7 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Authorization\Requirements" />
       <Folder Include="Features" />
     </ItemGroup>
 
